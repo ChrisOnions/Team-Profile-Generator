@@ -1,0 +1,65 @@
+* {
+  /* border: solid 1px black; */
+  margin: 0;
+}
+
+:root {
+  --red: red;
+  --white_smoke: whitesmoke;
+  --blue_title: rgb(82, 133, 241);
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: var(--red);
+  height: 150px;
+  opacity: 0.7;
+}
+
+#header_text {
+  padding: 45px;
+  text-align: center;
+  color: var(--white_smoke);
+  font-size: 50px;
+  text-transform: uppercase;
+}
+
+#Card_container_block {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 50px;
+  flex-flow: row wrap;
+}
+
+.card_block {
+  margin: 60px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  max-width: 300px;
+  font-size: x-large;
+}
+
+.card_name {
+  color: var(--white_smoke);
+  padding: 15px;
+  background-color: var(--blue_title);
+  height: 100px;
+}
+.card_id,
+.card_email,
+.office_number,
+.github_name,
+.school_name {
+  margin: 15px 20px;
+}
+
+footer {
+  text-align: center;
+  color: var(--white_smoke);
+  background-color: var(--red);
+  opacity: 0.7;
+  width: 100%;
+  position: relative;
+}

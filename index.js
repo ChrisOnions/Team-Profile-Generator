@@ -11,9 +11,21 @@ inquirer
     },
     {
       type: 'input',
-      message: "Would you like to assign an employee id :",
+      message: "whats is the assignged employee id :",
       name: 'Username',
       default: 'Jhon Doe',
     },
-
   ])
+  .then((results))
+
+//end function 
+function continueorquit() {
+  inquirer([{
+    input: "confirm",
+    name: "continue"
+     message: "would you like to continue"
+  }]).then(confrim){
+    //if confirm = true run the funtion again if false create the results html and css
+
+  }
+}

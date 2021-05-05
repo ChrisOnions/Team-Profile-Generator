@@ -1,13 +1,16 @@
-const employee = require('./Employee')
+const Employee = require('./Employee')
 
-class Engineer extends employee {
-  constructor(schoolName) {
+class Intern extends Employee {
+  constructor(employeeName, Id, email, schoolName) {
+    super(employeeName, Id, email)
     this.schoolName = schoolName
 
-    super(employeeName, Id, email)
-    this.employeeName = employeeName
-    this.employeeId = employeeId
-    this.email = email
+  }
+  getschoolName() {
+    return this.schoolName
+  }
+  get_Role() {
+    return "Intern"
   }
 }
-module.exports = Engineer
+module.exports = Intern

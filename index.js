@@ -39,9 +39,9 @@ function getData() {
   inquirer
     .prompt(managerQuestions)
     .then((data) => {
-      console.log(allEmployees);
       manager = new Manager(data.userName, data.employeeId, data.emailAdress, data.officeNumber);
       allEmployees.push(manager)
+      console.log(manager);
     })
     .then(() => {
       getEmployee()
@@ -97,11 +97,9 @@ function getEmployee() {
               },
             ])
             .then((schooldata) => {
-              //add the data to the intern?
               intern = new Intern(data.userName, data.employeeId, data.emailAdress, schooldata.school);
               allEmployees.push(intern)
             })
-            // or send data to be added to the html
             .then(() => {
               continueorquit()
             })
@@ -118,11 +116,9 @@ function getEmployee() {
             ])
             .then((gitdata) => {
               engineer = new Engineer(data.userName, data.employeeId, data.emailAdress, gitdata.github);
-              engineer.push(allEmployees)
               allEmployees.push(engineer)
             })
             .then(() => {
-              console.log(allEmployees);
               continueorquit(allEmployees)
             })
           break;

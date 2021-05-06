@@ -9,7 +9,11 @@
 
 # General info :
 
+### github link
+
 - https://github.com/ChrisOnions/Team-Profile-Generator
+
+### Video of app working
 
 - https://drive.google.com/file/d/1tl0zMw-pSxo0PXBAFHnTu9MV_4POJObu/view
 
@@ -41,4 +45,4 @@ Command line inputs:
 
 ## Pictures :
 
-![404 image missing](./Assets/My_team.jpg "Working product")
+![404 image missing](./Assets/My_team.JPG "Working product")

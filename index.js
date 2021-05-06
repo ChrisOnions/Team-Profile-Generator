@@ -1,14 +1,14 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
-
-const Employee = require('./Lib/Employee');
+const Genteam = require('./Src/Genteam');
 const Manager = require('./Lib/Manager');
 const Intern = require('./Lib/Intern');
 const Engineer = require('./Lib/Engineer');
-let allEmployees = [];
+const generateTeamHtml = require("./Src/Genteam");
+const allEmployees = [];
 
 function getData() {
-  console.log("Welcome to the Team builder please take your time and read all instructions. Enjoy");
+  console.log("Welcome to the Team builder. Please take your time and read all instructions.");
   const managerQuestions = [
     {
       type: 'input',
@@ -35,13 +35,14 @@ function getData() {
       default: '1',
     },
   ]
-
   inquirer
     .prompt(managerQuestions)
     .then((data) => {
-      manager = new Manager(data.userName, data.employeeId, data.emailAdress, data.officeNumber);
-      allEmployees.push(manager)
-      console.log(manager);
+      const role = { role: "Manager" }
+      let manager = new Manager(data.userName, data.employeeId, data.emailAdress, data.officeNumber);
+      const totaldata = { ...role, ...data }
+      allEmployees.push(totaldata)
+      console.log("Manager has been added");
     })
     .then(() => {
       getEmployee()
@@ -52,6 +53,7 @@ function getData() {
 
 
 }
+// Gets new employees info
 function getEmployee() {
 
   inquirer
@@ -83,7 +85,7 @@ function getEmployee() {
         default: 'Intern',
       }
     ])
-
+    // Uses the data from the role to ask final question depending on the role selected
     .then((data) => {
       switch (data.role) {
         case 'Intern':
@@ -97,8 +99,11 @@ function getEmployee() {
               },
             ])
             .then((schooldata) => {
-              intern = new Intern(data.userName, data.employeeId, data.emailAdress, schooldata.school);
-              allEmployees.push(intern)
+              let intern = new Intern(data.userName, data.employeeId, data.emailAdress, schooldata.school);
+              data
+              const totaldata = { ...schooldata, ...data }
+              allEmployees.push(totaldata)
+              console.log("Intern has been added");
             })
             .then(() => {
               continueorquit()
@@ -115,8 +120,10 @@ function getEmployee() {
               },
             ])
             .then((gitdata) => {
-              engineer = new Engineer(data.userName, data.employeeId, data.emailAdress, gitdata.github);
-              allEmployees.push(engineer)
+              let engineer = new Engineer(data.userName, data.employeeId, data.emailAdress, gitdata.github);
+              const totaldata = { ...gitdata, ...data }
+              allEmployees.push(totaldata)
+              console.log("Engineer has been added");
             })
             .then(() => {
               continueorquit(allEmployees)
@@ -127,7 +134,7 @@ function getEmployee() {
 }
 
 
-//would you like to create another person
+//Askes if you would like to add another Employee
 function continueorquit(data) {
   inquirer
     .prompt([
@@ -152,6 +159,14 @@ function continueorquit(data) {
 // Creates html css and anything else needed
 function createWebsite() {
   console.log(allEmployees)
-
+  fs.writeFile('./dist/index.html', generateTeamHtml(allEmployees), (err) =>
+    err ? console.error(err) : console.log('Team HTML File Generated!'));
+  console.log('The file has been saved!')
+  console.log(allEmployees[1].school);
 }
+// fs.writeFile('./dist/index.html', generateTeamHtml(allEmployees), (err) => {
+//   if (err) throw err;
+//   console.log('The file has been saved!');
+// });
+
 getData();

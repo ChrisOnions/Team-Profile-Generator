@@ -41,4 +41,4 @@ Command line inputs:
 
 ## Pictures :
 
-![404 image missing](./Assets/My_team.jpg "Working product")
+![404 image missing](./Assets/My_team.JPG "Working product")

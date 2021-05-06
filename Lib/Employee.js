@@ -10,11 +10,11 @@ class Employee {
   get_Id() {
     return this.employeeId
   }
-  get_mail() {
+  get_email() {
     return this.email
   }
   get_Role() {
-    this.role
+    return "Employee"
   }
 }
 module.exports = Employee

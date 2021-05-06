@@ -39,6 +39,7 @@ header {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   max-width: 300px;
   font-size: x-large;
+  min-width: 300px;
 }
 
 .card_name {
@@ -55,7 +56,13 @@ header {
   margin: 15px 5px;
 }
 
+.percent {
+  min-height: 78vh;
+}
+
 footer {
+  position: absolute;
+  bottom: 0;
   text-align: center;
   color: var(--white_smoke);
   background-color: var(--red);

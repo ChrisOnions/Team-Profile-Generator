@@ -45,6 +45,7 @@ function getData() {
       console.log("Manager has been added");
     })
     .then(() => {
+      console.log("Please enter first employee info : ");
       getEmployee()
     })
     .catch((error) => {
@@ -158,7 +159,7 @@ function continueorquit(data) {
 }
 // Creates html css and anything else needed
 function createWebsite() {
-  console.log(allEmployees)
+
   fs.writeFile('./dist/index.html', generateTeamHtml(allEmployees), (err) =>
     err ? console.error(err) : console.log('Team HTML File Generated!'));
   console.log('The file has been saved!')

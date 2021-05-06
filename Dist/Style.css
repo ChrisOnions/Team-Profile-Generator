@@ -53,7 +53,8 @@ header {
 .office_number,
 .github_name,
 .school_name {
-  margin: 15px 5px;
+  margin: 30px 5px;
+  font-size: 20px;
 }
 
 .percent {
